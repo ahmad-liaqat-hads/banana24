@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Banana24 – 24 hours of playful engagement</title>
+  <meta name="description" content="Banana24 is a gamified ads platform with 24 hourly spots each day. Brands sponsor a spot, users play, and winners are drawn every hour." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:#fff;color:#111;text-align:center}
+    header{padding:80px 20px}
+    h1{font-size:clamp(32px,5vw,52px);margin-bottom:20px}
+    p{max-width:640px;margin:0 auto 24px;color:#555;line-height:1.5}
+    .btn{display:inline-block;margin:6px;padding:12px 20px;border-radius:8px;font-weight:600;text-decoration:none}
+    .btn-primary{background:#FFD24D;color:#111}
+    .btn-outline{border:2px solid #FFD24D;color:#111}
+    section{padding:60px 20px}
+    h2{font-size:28px;margin-bottom:14px}
+    footer{padding:20px;color:#666;font-size:14px;border-top:1px solid #eee}
+    .spots{display:grid;grid-template-columns:repeat(24,1fr);gap:4px;max-width:800px;margin:20px auto}
+    .spot{aspect-ratio:1/1;background:#FFF3C2;border-radius:4px}
+    .spot.active{background:#FFD24D}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Banana24</h1>
+    <p>24 hourly spots. Engage, play, and win — every hour.</p>
+    <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+    <a href="#how" class="btn btn-outline">How it Works</a>
+    <div class="spots" id="spots"></div>
+  </header>
+
+  <section id="how">
+    <h2>How it Works</h2>
+    <p>1. Brands sponsor an hourly spot.<br/>2. Users engage in a quick action.<br/>3. Winners are drawn instantly, others earn coins.</p>
+  </section>
+
+  <section id="waitlist">
+    <h2>Get Early Access</h2>
+    <p>Leave your email and we’ll invite you to the private beta.</p>
+    <form action="https://formsubmit.co" method="POST" onsubmit="alert('Thanks! We\'ll be in touch soon.');">
+      <input type="hidden" name="_next" value="https://www.banana24.co/thanks.html"/>
+      <input type="email" name="email" placeholder="you@company.com" required style="padding:10px;width:240px;border:1px solid #ccc;border-radius:6px;"/>
+      <button type="submit" class="btn btn-primary">Join</button>
+    </form>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Banana24 · Developed by <a href="https://hads.sa" target="_blank">hads.sa</a>
+  </footer>
+
+  <script>
+    const grid = document.getElementById('spots');
+    const hour = new Date().getHours();
+    for(let i=0;i<24;i++){
+      const d=document.createElement('div');
+      d.className='spot'+(i===hour?' active':'');
+      grid.appendChild(d);
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
